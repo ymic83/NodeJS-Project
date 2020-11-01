@@ -12,9 +12,9 @@ router.post(`/search`, authController.isLoggedIn, movieController.search);
 
 router.get('/logout', authController.logout);
 
-router.post('/', authController.isLoggedIn, movieController.add);
+router.post('/add/', authController.isLoggedIn, movieController.add);
 
-router.post('/remove', authController.isLoggedIn, movieController.remove);
+router.post('/remove/', authController.isLoggedIn, movieController.remove);
 
 router.get('/', authController.isLoggedIn, movieController.home, (req, res) => {
     res.render('movies');
