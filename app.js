@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 
 
-dotenv.config({ path: './.env' });
+
 
 //static files
 app.use(express.static('public'));
