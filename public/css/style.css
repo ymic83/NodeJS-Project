@@ -1,0 +1,90 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: lightgray !important;
+    width: 80%;
+    margin: auto !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+header {
+    background-color: lightgrey;
+    margin-bottom: 10px;
+}
+
+.site-title {
+    font-family: cursive;
+    text-align: center;
+    color: blue;
+    font-size: 50px;
+}
+
+.slogan {
+    font-family: cursive;
+    text-align: center;
+    color: blue;
+    font-size: 20px;
+}
+
+.top-btns {
+    text-align: center;
+}
+
+.search {
+    padding-top: 4%;
+}
+
+
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+} */
+
+.wrapper {
+    padding: 0 1rem;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-gap: 1rem;
+}
+
+.movie_card {
+    text-decoration: none;
+    color: #1f1f1f;
+    background-color: white;
+    padding: 20px;
+}
+
+.movie_card :hover {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+}
+
+.movie {
+    background-color: lightgray;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.regtxt {
+    font-size: 14px;
+}
+
+.login-btn {
+    text-align: center;
+}
+
+.like_btn {
+    background-color: white;
+    border: none;
+}

@@ -1,0 +1,28 @@
+<!-- if !userID || !user fav render image of non fav with "no fav" onclick function if user fav = 1, show favored image with onclick function of unfavor else show unfavored image with onclick function of favor unfavor () { post "submit" to remove page in the
+movies.js, set up a query to remove the movie from favorites and switch image here. } favor () { post "submit" to add page in the movies.js, set up a query to add the movie yo favorites and switch image here. } no fav onclick { if clicked show tool tip
+with x button/ } -->
+
+
+<div class="like">
+    <% if(!user){%>
+        <button><img src="/img/unlike.png" alt='Click to like'></button>
+        <%  } else if(user && movie.userfav == '0') { %>
+            <button><img src="/img/unlike.png" alt='Click to like'></button>
+            <%  } else if(user && movie.userfav == '1') {%>
+                <button><img src="/img/like.png" alt='Click to like'></button>
+                <% } %>
+</div>
+
+<!-- <form action='/search/' method='POST'>
+                <input type="text" name="search" placeholder="Search for a movie" required>
+                <input type="submit" value="Search">
+            </form>
+</div>
+<div class="col-2 login">
+    <p class="welcome">
+        Welcome
+        //
+    </p>
+    <div class="logout-btn"><a href="/auth/logout"><button class="btn btn-primary">Logout</button></a></div>
+</div>
+</div> -->

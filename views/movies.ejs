@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Every page head section -->
+    <%- include('./partials/headSection.ejs') %>
+</head>
+
+<body>
+    <header class="header">
+        <!-- Every page Nav Bar.  Depends if the user is registered or not. -->
+        <% if(!user) { %>
+            <%- include('./partials/newHeader.ejs')%>
+                <% } else { %>
+                    <%- include('./partials/userHeader.ejs') %>
+                        <% } %>
+
+    </header>
+    <div class='wrapper'>
+        <div class="movies">
+            <!-- Takes the movie data from the array passed from the home module in movies.js and renders each movie.. -->
+            <% if(movies != null){ %>
+                <% movies.forEach(function(movie ,index) { %>
+                    <div class="movie_card">
+                        <a href="/movie/<%- movie.imdbID %>">
+                    <img src="<%- movie.Poster %>" alt="<%- movie.Title  %>">
+                </a>
+                        <h2>
+                            <%- movie.Title  %>
+                        </h2>
+                        <p>
+                            Released:
+                            <%- movie.Year%>
+                        </p>
+                        <div class="like">
+                            <!-- Giving the user the ability to like/dislike a movie unless not registered. -->
+                            <% if(!user){%>
+                                <button class="like_btn"><img src="/img/unlike.png" alt='Click to like' onclick='non_user()'></button>
+                                <%  } else if(user && movie.userfav == '0') { %>
+                                    <button type="button" class="like_btn"><img  id=<%- movie.imdbID%> src="/img/unlike.png" alt='Click to like' onclick='user_like(<%- movie.imdbID %>, <%- user.Userid %>)'></button>
+                                    <%  } else if(user && movie.userfav == '1') {%>
+                                        <button type="button" class="like_btn"><img id=<%- movie.imdbID%> src="/img/like.png" alt='Click to unlike'  onclick='user_unlike(<%- movie.imdbID %>, <%- user.Userid %>)'></button>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            No movies found!
+                            <% } %>
+
+
+        </div>
+    </div>
+    <script>
+        function user_like(movid, user) {
+            //attempting to send the the data via the add route to the movie.js file to update the database.
+            // debugger;
+            // let response = fetch('/auth/add', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json;charset=utf-8'
+            //     },
+            //     body: JSON.stringify(movid.id)
+
+            // });
+            document.images[movid.id].src = "/img/like.png";
+            document.images[movid.id].alt = 'Click to unlike';
+        }
+    </script>
+
+    <script>
+        function user_unlike(movid, user) {
+            //attempting to send the the data via the remove route to the movie.js file to update the database.
+            // debugger;
+            // let response = fetch('/auth/remove', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json;charset=utf-8'
+            //     },
+            //     body: JSON.stringify(movid.id)
+
+            // });
+            document.images[movid.id].src = "/img/unlike.png";
+            document.images[movid.id].alt = 'Click to like';
+        }
+    </script>
+    <script>
+        function non_user() {
+            alert('Please register or login.')
+        }
+    </script>
+</body>
+
+</html>

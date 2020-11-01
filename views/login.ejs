@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./partials/headSection.ejs') %>
+</head>
+
+<body>
+    <header class="header">
+        <%- include('./partials/newHeader.ejs') %>
+
+    </header>
+    <div class='container'>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
+                <!-- alert -->
+                <% if(typeof alert != 'undefined') { %>
+                    <%alert.forEach(function(error) { %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong><%- error.msg %></strong>
+                        </div>
+                        <% }) %>
+                            <% } %>
+
+                                <form action="/auth/login" method='post'>
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="email" name='email'>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name='password'>
+                                    </div>
+                                    <div class="login-btn">
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </div>
+                                </form>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+
+
+
+    </div>
+    </div>
+
+</body>
+
+</html>

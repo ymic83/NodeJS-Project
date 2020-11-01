@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./partials/headSection.ejs') %>
+</head>
+
+<body>
+    <header class="header">
+        <%- include('./partials/newHeader.ejs') %>
+
+    </header>
+    <div class='container'>
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-6">
+                <!-- alert -->
+                <% if(typeof alert != 'undefined') { %>
+                    <%alert.forEach(function(error) { %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong><%- error.msg %></strong>
+                        </div>
+                        <% }) %>
+                            <% } %>
+
+                                <p class="reg-title">Register to the best Movie Experience!</p>
+                                <form action="/auth/register" method='post'>
+                                    <!-- First Name -->
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" name='firstName'>
+                                    </div>
+                                    <!-- Last Name -->
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" name='lastName'>
+                                    </div>
+                                    <!-- Email-->
+                                    <div class="form-group">
+                                        <label for="email" class="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name='email'>
+                                    </div>
+                                    <!-- Password-->
+                                    <div class="form-group">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name='password'>
+                                    </div>
+                                    <!--Confirm Password-->
+                                    <div class="form-group">
+                                        <label for="passwordConfirm" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="passwordConfirm" name='passwordConfirm'>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </form>
+            </div>
+            <div class="col-3">
+
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
