@@ -172,27 +172,34 @@ exports.favorites = async(req, res, next) => {
 
 //When a user clicks on the "like" button, we insert the userID and movie ID into the favorites table in the DB.
 exports.add = async(req, res, next) => {
-    console.log(req);
+
+    console.log(req.user);
+    console.log(req.body);
+
     try {
-        con.query(`insert into favorites values (Userid = ?, ${movie.imdbID}`, [req.user.Userid], async(err, result) => {
+        con.query(`insert into favorites values ('${req.user.Userid}', '${req.body.id}')`, async(err, result) => {
             console.log(result);
             if (err) throw err;
         })
     } catch (error) {
         console.log(error);
-        return next();
+
     }
+    return res.status(200).send({});
 };
 
 //When a user clicks on the "unlike" button, we remove the userID and movie ID from the favorites table in the DB.
 exports.remove = async(req, res, next) => {
+    console.log(req.user);
+    console.log(req.body);
     try {
-        con.query(`delete from favorites where Userid = ? and ${movie.imdbID}`, [req.user.Userid], async(err, result) => {
+        con.query(`delete from favorites where Userid = ? and MovieID = '${req.body.id}'`, [req.user.Userid], async(err, result) => {
             console.log(result);
             if (err) throw err;
         })
     } catch (error) {
         console.log(error);
-        return next();
+
     }
+    return res.status(200).send({});
 };
