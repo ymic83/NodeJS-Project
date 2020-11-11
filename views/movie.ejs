@@ -33,9 +33,9 @@
                     <% if(!user){%>
                         <button class="like_btn"><img src="/img/unlike.png" alt='Click to like' onclick='non_user()'></button>
                         <%  } else if(user && movie.userfav == '0') { %>
-                            <button type="button" class="like_btn"><img  id=<%- movie.imdbID%> src="/img/unlike.png" alt='Click to like' onclick='user_like(<%- movie.imdbID %>, <%- user.Userid %>)'></button>
+                            <button type="button" class="like_btn" id='tolike'><img  id=<%- movie.imdbID%> src="/img/unlike.png" alt='Click to like' onclick='like(<%- movie.imdbID %>, <%- user.Userid %>, this.parentNode.id)'></button>
                             <%  } else if(user && movie.userfav == '1') {%>
-                                <button type="button" class="like_btn"><img id=<%- movie.imdbID%> src="/img/like.png" alt='Click to unlike'  onclick='user_unlike(<%- movie.imdbID %>, <%- user.Userid %>)'></button>
+                                <button type="button" class="like_btn" id='tounlike'><img id=<%- movie.imdbID%> src="/img/like.png" alt='Click to unlike'  onclick='like(<%- movie.imdbID %>, <%- user.Userid %>, this.parentNode.id)'></button>
                                 <% } %>
                 </div>
 
