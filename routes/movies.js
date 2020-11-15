@@ -64,7 +64,7 @@ exports.home = async(req, res, next) => {
 exports.movie = async(req, res) => {
     let movieID = req.params.id
         //Getting the movie data via the API per movie ID.
-    let movieAPI = await axios.get(`https://omdbapi.com/?apikey=24998e29&i=${movieID}`)
+    let movieAPI = await axios.get(`https://omdbapi.com/?apikey=24998e29&i=${movieID}&plot=full`)
     try {
         if (req.user.Userid) {
             //If this is a registered user, we check if movies from the list are in his favorites, if yes, a value of 1 is passed in userfav, if not, a 0 is passed.
