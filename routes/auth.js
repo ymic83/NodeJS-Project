@@ -24,7 +24,8 @@ router.get('/', authController.isLoggedIn, movieController.home, (req, res) => {
 router.get('/register', authController.isLoggedIn, (req, res) => {
     if (!req.user) {
         res.render('register', {
-            user: req.user
+            user: req.user,
+            message: ''
         });
     } else {
         res.redirect('/');
@@ -34,7 +35,8 @@ router.get('/register', authController.isLoggedIn, (req, res) => {
 router.get('/login', authController.isLoggedIn, (req, res) => {
     if (!req.user) {
         res.render('login', {
-            user: req.user
+            user: req.user,
+            message: ''
         });
     } else {
         res.redirect('/');

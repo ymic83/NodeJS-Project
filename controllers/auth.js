@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
-
+const Joi = require('joi');
 
 const db = mysql.createPool({
     host: process.env.DATABASE_HOST,
@@ -60,6 +60,20 @@ exports.register = (req, res) => {
     console.log(req.body);
     //The register form is submitted with all the values.
     const { firstName, lastName, email, password, passwordConfirm } = req.body;
+
+    const schema = Joi.object({
+        firstName: Joi.string().min(2).max(20).regex(/^[A-Za-z0-9]+$/).required(),
+        lastName: Joi.string().min(2).max(20).regex(/^[A-Za-z0-9]+$/).required(),
+        email: Joi.string().email(),
+        password: Joi.string().min(8).max(16).regex(/^[A-Za-z0-9]+$/).required(),
+        passwordConfirm: Joi.string().min(8).max(16).regex(/^[A-Za-z0-9]+$/).required()
+    });
+    const validation = schema.validate(req.body);
+    if (validation.error) {
+        return res.render('register', {
+            message: validation.error.message
+        })
+    }
     //Checking to make sure the email doesn't already exist.
     db.query('SELECT email FROM users WHERE email = ?', [email], async(error, results) => {
         if (error) {

@@ -19,7 +19,7 @@
     <div class='wrapper'>
         <div class="movies">
             <!-- Takes the movie data from the array passed from the favorites module in movies.js and renders each movie.. -->
-            <% if(movies != null){ %>
+            <% if(movies != null && movies.length != 0){ %>
                 <% movies.forEach(function(movie ,index) { %>
                     <div class="movie_card">
                         <a href="/movie/<%- movie.imdbID %>">
@@ -47,7 +47,7 @@
                     </div>
                     <% }) %>
                         <% } else { %>
-                            <p>No movies found!</p>
+                            <h2>Looks like you haven't added any movies to your Favorites yet!</h2>
                             <% } %>
         </div>
     </div>
