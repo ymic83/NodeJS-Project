@@ -7,72 +7,83 @@
 </head>
 
 <body>
-    <!-- Every page Nav Bar.  Depends if the user is registered or not. -->
-    <header class="header">
-        <% if(!user) { %>
-            <%- include('./partials/newHeader.ejs')%>
-                <% } else { %>
-                    <%- include('./partials/userHeader.ejs') %>
-                        <% } %>
+    <div class="main-area">
+        <!-- Every page Nav Bar.  Depends if the user is registered or not. -->
+        <header class="header">
+            <% if(!user) { %>
+                <%- include('./partials/newHeader.ejs')%>
+                    <% } else { %>
+                        <%- include('./partials/userHeader.ejs') %>
+                            <% } %>
 
-    </header>
-    <div class='wrapper'>
-        <div class="movie">
-            <!-- Takes the movie data from the array passed from the movie module in movies.js and renders each movie.. -->
-            <% if(movie != null){ %>
-                <img src="<%- movie.Poster %>" alt="<%- movie.Title  %>">
-                <h2>
-                    <%- movie.Title  %>
-                </h2>
-                <p>
-                    Release:
-                    <%- movie.Released%>
-                </p>
-                <p>
-                    Rated:
-                    <%- movie.Rated%>
-                </p>
-                <p>
-                    Genre:
-                    <%- movie.Genre%>
-                </p>
-                <p>
-                    Actors:
-                    <%- movie.Actors%>
-                </p>
-                <p>
-                    Language:
-                    <%- movie.Language%>
-                </p>
-                <p>
-                    Country:
-                    <%- movie.Country%>
-                </p>
-                <p>
-                    Awards:
-                    <%- movie.Awards%>
-                </p>
-                <p>
-                    <%- movie.Plot%>
-                </p>
-
-                <div class="like">
-                    <!-- Giving the user the ability to like/dislike a movie unless not registered. -->
-                    <% if(!user){%>
-                        <button class="like_btn"><img src="/img/unlike.png" alt='Click to like' onclick='non_user()'></button>
-                        <%  } else if(user && movie.userfav == '0') { %>
-                            <button type="button" class="like_btn" id='tolike'><img  id=<%- movie.imdbID%> src="/img/unlike.png" alt='Click to like' onclick='like(<%- movie.imdbID %>, <%- user.Userid %>)'></button>
-                            <%  } else if(user && movie.userfav == '1') {%>
-                                <button type="button" class="like_btn" id='tounlike'><img id=<%- movie.imdbID%> src="/img/like.png" alt='Click to unlike'  onclick='like(<%- movie.imdbID %>, <%- user.Userid %>)'></button>
-                                <% } %>
+        </header>
+        <div class="card mb-3 movie-card" style="max-width: 1200px;">
+            <div class="row no-gutters movie-card-body">
+                <div class="col-md-4">
+                    <!-- Takes the movie data from the array passed from the movie module in movies.js and renders each movie.. -->
+                    <% if(movie != null){ %>
+                        <img class="card-img" src="<%- movie.Poster %>" alt="<%- movie.Title  %>">
                 </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <%- movie.Title  %>
+                        </h2>
+                        <p class="card-text">
+                            <b>Release:</b>
+                            <%- movie.Released%>
+                        </p>
+                        <p class="card-text">
+                            <b>Rated:</b>
+                            <%- movie.Rated%>
+                        </p>
+                        <p class="card-text">
+                            <b>Genre:</b>
+                            <%- movie.Genre%>
+                        </p>
+                        <p class="card-text">
+                            <b>Actors:</b>
+                            <%- movie.Actors%>
+                        </p>
+                        <p class="card-text">
+                            <b>Language:</b>
+                            <%- movie.Language%>
+                        </p>
+                        <p class="card-text">
+                            <b>Country:</b>
+                            <%- movie.Country%>
+                        </p>
+                        <p class="card-text">
+                            <b>Awards:</b>
+                            <%- movie.Awards%>
+                        </p>
+                        <p class="card-text">
+                            <b>Plot:</b>
+                            <%- movie.Plot%>
+                        </p>
 
-                <% } else { %>
-                    No movies found!
-                    <% } %>
+                        <div class="like">
+                            <!-- Giving the user the ability to like/dislike a movie unless not registered. -->
+                            <% if(!user){%>
+                                <button class="like_btn"><img src="/img/unlike.png" alt='Click to like' onclick='non_user()'></button>
+                                <%  } else if(user && movie.userfav == '0') { %>
+                                    <button type="button" class="like_btn" id='tolike'><img  id=<%- movie.imdbID%> src="/img/unlike.png" alt='Click to like' onclick='like(<%- movie.imdbID %>, <%- user.Userid %>, this.parentNode.id)'></button>
+                                    <%  } else if(user && movie.userfav == '1') {%>
+                                        <button type="button" class="like_btn" id='tounlike'><img id=<%- movie.imdbID%> src="/img/like.png" alt='Click to unlike'  onclick='like(<%- movie.imdbID %>, <%- user.Userid %>, this.parentNode.id)'></button>
+                                        <% } %>
+                        </div>
+
+                        <% } else { %>
+                            No movies found!
+                            <% } %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src='/js/script.js'></script>
+
+    <%- include('./partials/footer.ejs') %>
+        <script src='/js/script.js'></script>
 </body>
 
 </html>

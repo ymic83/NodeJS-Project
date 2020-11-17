@@ -1,12 +1,12 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: lightgray !important;
+    background-color: #f4f4f2 !important;
     width: 80%;
     margin: auto !important;
 }
 
-img {
-    max-width: 100%;
+.main-area {
+    min-height: calc(100vh - 70px);
 }
 
 h2 {
@@ -14,22 +14,34 @@ h2 {
 }
 
 header {
-    background-color: lightgrey;
+    background-color: #E8E8E8;
     margin-bottom: 10px;
+    border: 1px solid #bbbfca;
 }
 
 .site-title {
-    font-family: cursive;
+    font-family: Dante;
     text-align: center;
-    color: blue;
+    color: darkblue;
     font-size: 50px;
 }
 
 .slogan {
-    font-family: cursive;
+    font-family: Dante;
     text-align: center;
-    color: blue;
+    color: darkblue;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.user-slogan {
+    font-family: Dante;
+    text-align: center;
+    color: darkblue;
     font-size: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .top-btns {
@@ -40,15 +52,6 @@ header {
     padding-top: 4%;
 }
 
-
-/* .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-} */
-
 .wrapper {
     padding: 0 1rem;
 }
@@ -56,22 +59,35 @@ header {
 .movies {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 3rem;
+    position: relative;
 }
 
 .movie_card {
     text-decoration: none;
     color: #1f1f1f;
-    background-color: white;
+    background-color: #E8E8E8;
     padding: 20px;
 }
 
-.movie_card :hover {
+.movie_card h2 {
+    padding-top: 10px;
+}
+
+.main-poster img {
+    height: 466px;
+}
+
+.main-poster {
+    max-width: 330px;
+}
+
+.main-poster :hover {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
 }
 
 .movie {
-    background-color: lightgray;
+    background-color: #E8E8E8;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -85,6 +101,93 @@ header {
 }
 
 .like_btn {
-    background-color: white;
+    background-color: transparent;
     border: none;
+}
+
+.movie-card {
+    margin: auto;
+}
+
+.movie-card-body {
+    background-color: #E8E8E8 !important;
+}
+
+#footer {
+    background-color: #E8E8E8;
+    position: relative;
+    height: 50px;
+    margin-top: 20px;
+    clear: both;
+}
+
+.footer-text {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.login {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.register {
+    padding-left: 5%;
+}
+
+.favorites-text {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.fav-img {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    margin-left: 15px;
+}
+
+.logout-link {
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+    .main-poster img {
+        width: 310px;
+    }
+    body {
+        width: 95%;
+    }
+    .slogan {
+        font-size: 20px;
+    }
+    .main-logo {
+        margin: auto
+    }
+    .login {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    .register {
+        margin-top: 15px;
+        padding-left: 0;
+    }
+    input::placeholder {
+        visibility: hidden;
+    }
+    .logout-link {
+        margin-right: 10px;
+        margin-left: 2px;
+    }
+    .user-slogan {
+        padding-left: 25%;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .register {
+        padding-left: 40%;
+    }
 }

@@ -26,14 +26,15 @@ const query = util.promisify(con.query).bind(con);
 //This is the movie controller middleware for home.  We query the database for the default movies, send the results one after another to the API and put all the results in an array which we send over the movies.ejs page for rendering. this middleware is called through the route in the auth.js file.
 exports.home = async(req, res, next) => {
     //Getting the default movies from the DB.
-    const result = await query('select * from defaultmovies order by rand() limit 10'); {
+    const result = await query('select * from defaultmovies order by rand() limit 12'); {
         let movielist = [];
+        console.log(result);
 
         for (let i = 0; i < result.length; i++) {
             let id = result[i].MovieID;
             //Getting the movie data via the API per movie ID.
             let movieAPI = await axios.get(`https://omdbapi.com/?apikey=24998e29&I=${id}&type=movie`)
-
+            console.log(movieAPI);
             try {
                 if (req.user.Userid) {
                     //If this is a registered user, we check if movies from the list are in his favorites, if yes, a value of 1 is passed in userfav, if not, a 0 is passed.

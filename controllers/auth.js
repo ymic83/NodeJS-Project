@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 const Joi = require('joi');
 
+
 const db = mysql.createPool({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
@@ -98,7 +99,10 @@ exports.register = (req, res) => {
                 console.log(error);
             } else {
                 console.log(results);
-                return res.render('login');
+                return res.render('login', {
+                    user: req.user,
+                    message: ''
+                });
             }
         })
 

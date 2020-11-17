@@ -1,20 +1,34 @@
-<div class="row">
-    <div class="col-2">
+<nav class="navbar navbar-expand-xl navbar-light">
+    <div class='main-logo'>
         <a href="/"><img src='/img/logo.png' alt="Logo"></a>
     </div>
-    <div class="col-4 site-title">My Fav Movies</br><span class='slogan'>The place for your favorite movies!</span></div>
-    <div class="col-1 favlink"><a href="/favorites">My Favorites</a></div>
-    <div class="col-3 search">
-        <form action='/search/' method='POST'>
-            <input type="text" name="search" placeholder="Search for a movie" required>
-            <input type="submit" value="Search">
+    <p class='user-slogan'>The place for </br>your favorite movies!</p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-header" aria-controls="site-header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="site-header" style>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item favorites-link">
+                <a href="/favorites"><img src="/img/like.png" class="fav-img"><span class="favorites-text">My Favorites</span></a>
+            </li>
+            </br>
+            <li class="nav-item welcome">
+                <span><b>Welcome:</b></span></br>
+                <%- user.FirstName%>
+                    <%-user.LastName%>
+
+            </li>
+            <li class="nav-item logout">
+                <div class="logout-link"><a href="/auth/logout">Logout</a></div>
+            </li>
+        </ul>
+        <form action='/search' method='POST' class="form-inline my-2 my-xl-0">
+            <input class="form-control mr-xl-2" type="search" placeholder="Search for a movie" required name="search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-xl-0" type="submit">Search</button>
         </form>
     </div>
-    <div class="col-2 login">
-        <p class="welcome">
-            Welcome
-            <%- user.FirstName +' '+ user.LastName%>
-        </p>
-        <div class="logout-btn"><a href="/auth/logout"><button class="btn btn-primary">Logout</button></a></div>
-    </div>
-</div>
+</nav>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-header" aria-controls="site-header" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
