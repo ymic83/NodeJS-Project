@@ -5,9 +5,8 @@ function non_user() {
 
 
 function like(movid, user) {
-    debugger;
     //attempting to send the the data via the add route to the movie.js file to update the database.
-    if (document.images[movid.id].src == "http://localhost:3000/img/unlike.png") {
+    if (document.images[movid.id].src == "http://myfavmovie.herokuapp.com/img/unlike.png") {
         let response = fetch('/auth/add', {
             method: 'POST',
             headers: {
@@ -18,7 +17,6 @@ function like(movid, user) {
             })
 
         });
-        debugger;
         document.images[movid.id].src = "/img/like.png";
         document.images[movid.id].alt = 'Click to unlike';
 
